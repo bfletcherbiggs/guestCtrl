@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Party!!!</title>
-  </head>
-  <body>
-    <div>
-      My Party
-      <div>
-      My Guests
-      <ul>
-        <li>Christian</li>
-        <li>Ben</li>
-      </ul>
-      </div>
+</head>
+
+<body>
+    <div ng-app="myApp">
+        My Party
+        <div ng-controller="GuestCtrl">
+            <input ng-model="searchTerm.name">
+
+            {{test}}
+
+            <ul>
+              <li ng-repeat="guests in guests | filter: searchTerm ">{{guests.name}} - {{guests.hatSize}}</li>
+            </ul>
+            <input placeholder="new guest name" ng-model="newGuestName">
+            <input placeholder="hat size" ng-model="newGuestHatSize">
+            <!-- ng-model creates link 2 way binding-->
+            <button ng-click="addGuest()">Add Guest</button>
+        </div>
+
     </div>
+
+    <!-- <div ng-controller="anothercontroller">
+    </div> -->
+
+    <footer>
+        Killing it
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
     <script type="text/javascript" src="app.js"></script>
-  </body>
+    <script type="text/javascript" src="GuestCtrl.js"></script>
+</body>
+
 </html>
